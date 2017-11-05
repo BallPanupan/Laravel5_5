@@ -32,6 +32,14 @@
         $Lname=$row->Lname;
         $sex=$row->sex;
     }
+    $sexM="";
+    $sexF="";
+
+    if($sex=="ชาย"){
+      $sexM="selected";
+    } else {
+      $sexF="selected";
+    }
 ?>
 
 <div class="row">
@@ -45,9 +53,8 @@
        Last name :<input type="text" name ="Lname" value="<?=$Lname?>"> <br/>
        sex :
        <select name="sex">
-         <option value="nun">-- เลือกเพศ --</option>
-         <option value="=ชาย">ชาย</option>
-         <option value="หญิง">หญิง</option>
+         <option value="ชาย" <?= $sexM ?> >ชาย</option>
+         <option value="หญิง" <?= $sexF ?> >หญิง</option>
 
        </select>
     <p>
