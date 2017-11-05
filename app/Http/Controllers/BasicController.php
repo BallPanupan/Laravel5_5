@@ -87,8 +87,27 @@ class BasicController extends Controller
     $sql="select * from member_test where id='$id'";
     $data['result']=DB::select($sql);
 
-    //return view('update',$data);
-    return $data;
+    return view('update',$data);
+    //return $data;
   }
+
+  public function update2(Request $request){
+    $id=$request->input('id');
+    $Fname=$request->input('Fname');
+    $Lname=$request->input('Lname');
+    $sex=$request->input('sex');
+
+    //$sql="update tb_type set
+    //name_type='$name_type',
+    //price_type='$price_type',
+    //where id_type='$id_type'";
+
+    DB::update('update member_test set Fname=?,Lname=?,sex=? where id=?',
+  [$Fname,$Lname,$sex,$id]);
+
+    echo "Update OK! <br/>";
+    $link=url('/all');
+    echo "<a href='$link'> Back </a>";
+    }
 
 }

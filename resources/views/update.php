@@ -13,13 +13,26 @@
 <p></p>
 <div class="container">
   <center>
-    <div class="row">
-      <div class="col-sm-12">
-        <p><a href="./insert" class="btn btn-success" role="button">Insert</a> </p>
+  <div class="row">
+    <div class="col-sm-6">
+      <p><a href="/insert" class="btn btn-success" role="button">Insert</a> </p>
     </div>
-  </center>
+    <div class="col-sm-6">
+      <p><a href="#" class="btn btn-success" role="button">Update</a> </p>
+    </div>
+
   </div>
+</center>
 </div>
+
+<?php
+    foreach ($result as $row) {
+        $id=$row->id;
+        $Fname=$row->Fname;
+        $Lname=$row->Lname;
+        $sex=$row->sex;
+    }
+?>
 
 <div class="row">
 
@@ -27,9 +40,9 @@
   </div>
 
   <div class="col-sm-11">
-    <form action="insert2" method="post">
-      First name :<input type="text" name ="Fname"> <br/>
-       Last name :<input type="text" name ="Lname"> <br/>
+    <form action="<?=url('/update2')?>" method="post"enctype="multipart/form-data">
+      First name :<input type="text" name ="Fname" value="<?=$Fname?>"> <br/>
+       Last name :<input type="text" name ="Lname" value="<?=$Lname?>"> <br/>
        sex :
        <select name="sex">
          <option value="nun">-- เลือกเพศ --</option>
@@ -41,7 +54,8 @@
        <input type="submit">
        <input type="reset">
     </p>
-       <input type="hidden" name="_token" value="<?php echo csrf_token() ?>"/>
+       <input type="hidden" name="id" value="<?=$id?>">
+       <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
     </form>
   </div>
 
@@ -49,10 +63,6 @@
   </div>
 
 </div>
-
-
-
-
 
 
 </body>

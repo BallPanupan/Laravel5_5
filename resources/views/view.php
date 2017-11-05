@@ -14,20 +14,13 @@
 <div class="container">
   <center>
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
       <p><a href="./insert" class="btn btn-success" role="button">Insert</a> </p>
-    </div>
-    <div class="col-sm-6">
-      <p><a href="#" class="btn btn-success" role="button">Update</a> </p>
-    </div>
-
   </div>
 </center>
 </div>
 
 <div class="jumbotron text-center">
-  <h1>My First Bootstrap Page</h1>
-
   <table border=1>
     <tr bgcolor=#E8E8E8>
       <td><center><b>รหัส</b></center></td>
@@ -35,6 +28,7 @@
       <td><center><b>สกุล</b></center></td>
       <td><center><b>เพศ</b></center></td>
       <td><center><b>ลบ</b></center></td>
+      <td><center><b>แก้ไข</b></center></td>
     </tr>
 
     <?php
@@ -46,6 +40,7 @@
         $sex=$row->sex;
 
         $link1=url('/delete/'.$id);
+        $link2=url('/update/'.$id);
 
        echo "<tr>
          <td><center>$id</center></td>
@@ -53,6 +48,7 @@
          <td>$Lname</td>
          <td>$sex</td>
          <td><center><a href='$link1'>ลบ</center></a></td>
+         <td><center><a href='$link2'>แก้ไข</center></a></td>
        </tr>";
    }
    ?>
